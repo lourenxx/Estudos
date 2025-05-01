@@ -1,0 +1,29 @@
+# Compiled files
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+
+# VS config
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build logs
+*.log
+
+# Test results
+TestResults/
+
+# Packages (if using packages.config)
+packages/
+
+# Publish settings
+*.Publish.xml
+*.pubxml
+
+# Others
+*.cache
