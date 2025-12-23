@@ -12,7 +12,7 @@ builder.Services.AddSwaggerGen();
 
 // Configuração do DbContext com SQL Server
 builder.Services.AddDbContext<DbEstudos>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Db_Estudos"))
+    options.UseSqlServer(builder.Configuration.GetConnectionString("db_Estudos"))
 );
 
 var app = builder.Build();
