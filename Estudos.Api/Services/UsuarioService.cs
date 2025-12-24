@@ -18,10 +18,11 @@ namespace Estudos.Api.Services
         {
             Usuario usuario = new Usuario
             {
+                Id = usuarioDto.Id,
                 Nome = usuarioDto.Nome,
                 Email = usuarioDto.Email,
                 Senha = usuarioDto.Senha,
-                DataCriacao = DateTime.UtcNow
+                DataCriacao = DateTime.Now
             };
 
             _context.Usuario.Add(usuario);
@@ -32,7 +33,9 @@ namespace Estudos.Api.Services
                 Id = usuario.Id,
                 Nome = usuario.Nome,
                 Email = usuario.Email,
-                Senha = usuario.Senha
+                Senha = usuario.Senha,
+                DataCriacao = usuario.DataCriacao
+                
             };
         }
     }
