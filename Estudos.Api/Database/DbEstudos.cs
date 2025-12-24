@@ -12,26 +12,26 @@ namespace Estudos.Api.Database
         }
 
         // Conjunto de entidades para a tabela Usuarios
-        public DbSet<Usuarios> Usuarios { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
 
         // Configuração do modelo de dados
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
-            builder.HasSequence<int>("Seq_Usuarios", schema: "dbo")
+            builder.HasSequence<int>("SeqUsuario", schema: "dbo")
                 .StartsAt(1)
                 .IncrementsBy(1);
 
             // Configuração da entidade Usuarios
-            builder.Entity<Usuarios>(entity =>
+            builder.Entity<Usuario>(entity =>
             {
-                entity.ToTable("Usuarios");
+                entity.ToTable("Usuario");
                 
                 entity.HasKey(e => e.Id);
 
                 entity.Property(e => e.Id)
-                    .HasDefaultValueSql("NEXT VALUE FOR dbo.Seq_Usuarios");
+                    .HasDefaultValueSql("NEXT VALUE FOR dbo.SeqUsuario");
 
                 entity.Property(e => e.Nome)
                 .HasMaxLength(100);
