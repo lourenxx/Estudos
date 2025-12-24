@@ -13,7 +13,6 @@ namespace Estudos.Api.Database
 
         // Conjunto de entidades para a tabela Usuarios
         public DbSet<Usuario> Usuario { get; set; }
-
         // Configuração do modelo de dados
         protected override void OnModelCreating(ModelBuilder builder)
         {

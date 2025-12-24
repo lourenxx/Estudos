@@ -1,4 +1,6 @@
 using Estudos.Api.Database;
+using Estudos.Api.Services;
+using Estudos.Api.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +16,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DbEstudos>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("db_Estudos"))
 );
+
+// Injeção de dependência para o serviço de usuário
+builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 
 var app = builder.Build();
 
