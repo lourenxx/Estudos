@@ -1,7 +1,9 @@
 ﻿using Estudos.Api.Database;
 using Estudos.Api.DTO;
 using Estudos.Api.Models;
+using Estudos.Api.Security;
 using Estudos.Api.Services.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using System.Runtime.CompilerServices;
 
 namespace Estudos.Api.Services
@@ -21,7 +23,7 @@ namespace Estudos.Api.Services
             {
                 Nome = dto.Nome,
                 Email = dto.Email,
-                Senha = dto.Senha,
+                Senha = HashPassword.Hash(dto.Senha),
                 DataCriacao = DateTime.Now
             };
 
