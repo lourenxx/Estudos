@@ -17,10 +17,31 @@ namespace Estudos.Api.Controller
         }
 
         [HttpPost]
-        public async Task<IActionResult> CriarUsuario(UsuarioDto usuarioDto)
+        public async Task<IActionResult> CriarUsuario(CriarUsuarioDto dto)
         {
-            var resultado = await _service.CriarUsuario(usuarioDto);
-            return Ok(resultado);
+            try
+            {
+                var resultado = await _service.CriarUsuario(dto);
+                return Ok(resultado);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeletarUsuario(int id)
+        {
+            try
+            {
+                var resultado = await _service.DeletarUsuario(id);
+                return Ok(resultado);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
