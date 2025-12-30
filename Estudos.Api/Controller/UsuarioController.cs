@@ -43,5 +43,18 @@ namespace Estudos.Api.Controller
                 return BadRequest(ex.Message);
             }
         }
+        [HttpPut]
+        public async Task<IActionResult> AlterarUsuario(UsuarioDto dto)
+        {
+            try
+            {
+                var resultado = await _service.AlterarUsuario(dto);
+                return Ok(resultado);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

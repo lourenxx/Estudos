@@ -41,6 +41,30 @@ namespace Estudos.Api.Services
             };
         }
 
+        public async Task<bool> AlterarUsuario(UsuarioDto dto)
+        {
+
+
+            Usuario usuario = await _context.Usuario.FindAsync(dto.Id);
+
+            if (usuario == null)
+            {
+                return false;
+            }
+            else
+            {
+
+                usuario.Nome = dto.Nome;
+                usuario.Email = dto.Email;
+                usuario.Senha = HashPassword.Hash(dto.Senha);
+
+                await _context.SaveChangesAsync();
+
+                return true;
+            }
+
+        }
+
         public async Task<string> DeletarUsuario(int id)
         {
             Usuario? usuario = await _context.Usuario.FindAsync(id);
