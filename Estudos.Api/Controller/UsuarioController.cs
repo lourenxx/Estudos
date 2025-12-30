@@ -16,6 +16,20 @@ namespace Estudos.Api.Controller
             _service = service;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> ListarUsuarios()
+        {
+            try
+            {
+                var resultado = await _service.ListarUsuarios();
+                return Ok(resultado);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        
         [HttpPost]
         public async Task<IActionResult> CriarUsuario(CriarUsuarioDto dto)
         {
@@ -30,12 +44,12 @@ namespace Estudos.Api.Controller
             }
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> DeletarUsuario(int id)
+        [HttpPut]
+        public async Task<IActionResult> AlterarUsuario(UsuarioDto dto)
         {
             try
             {
-                var resultado = await _service.DeletarUsuario(id);
+                var resultado = await _service.AlterarUsuario(dto);
                 return Ok(resultado);
             }
             catch (Exception ex)
@@ -43,12 +57,13 @@ namespace Estudos.Api.Controller
                 return BadRequest(ex.Message);
             }
         }
-        [HttpPut]
-        public async Task<IActionResult> AlterarUsuario(UsuarioDto dto)
+
+        [HttpDelete]
+        public async Task<IActionResult> DeletarUsuario(int id)
         {
             try
             {
-                var resultado = await _service.AlterarUsuario(dto);
+                var resultado = await _service.DeletarUsuario(id);
                 return Ok(resultado);
             }
             catch (Exception ex)

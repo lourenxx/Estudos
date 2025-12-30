@@ -4,6 +4,7 @@ using Estudos.Api.Models;
 using Estudos.Api.Security;
 using Estudos.Api.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System.Runtime.CompilerServices;
 
 namespace Estudos.Api.Services
@@ -15,6 +16,25 @@ namespace Estudos.Api.Services
         public UsuarioService(DbEstudos context)
         {
             _context = context;
+        }
+
+        public async Task<List<UsuarioDto>> ListarUsuarios()
+        {
+            List<Usuario> usuarios = await _context.Usuario.ToListAsync();
+
+            List<UsuarioDto> listaUsuarios = usuarios.Select(u => new UsuarioDto
+            {
+                Id = u.Id,
+                Nome = u.Nome,
+                Email = u.Email,
+                Senha = u.Senha,
+                DataCriacao = u.DataCriacao
+
+            }).ToList();
+
+            return listaUsuarios;
+
+
         }
 
         public async Task<UsuarioDto> CriarUsuario(CriarUsuarioDto dto)
