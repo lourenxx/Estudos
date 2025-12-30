@@ -29,7 +29,21 @@ namespace Estudos.Api.Controller
                 return BadRequest(ex.Message);
             }
         }
-        
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> BuscarUsuarioPorId(int id)
+        {
+            try
+            {
+                var resultado = await _service.BuscarUsuarioPorId(id);
+                return Ok(resultado);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpPost]
         public async Task<IActionResult> CriarUsuario(CriarUsuarioDto dto)
         {

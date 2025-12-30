@@ -34,7 +34,29 @@ namespace Estudos.Api.Services
 
             return listaUsuarios;
 
+        }
 
+        public async Task<UsuarioDto> BuscarUsuarioPorId(int id)
+        {
+
+            Usuario? usuario = await _context.Usuario.FindAsync(id);
+
+
+            if(usuario == null)
+            {
+                return new UsuarioDto();
+            }
+            else
+            {
+                return new UsuarioDto()
+                {
+                    Id = usuario.Id,
+                    Nome = usuario.Nome,
+                    Email = usuario.Email,
+                    Senha = usuario.Senha,
+                    DataCriacao = usuario.DataCriacao
+                };
+            }
         }
 
         public async Task<UsuarioDto> CriarUsuario(CriarUsuarioDto dto)

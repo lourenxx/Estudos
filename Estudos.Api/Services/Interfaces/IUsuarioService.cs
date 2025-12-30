@@ -5,9 +5,12 @@ namespace Estudos.Api.Services.Interfaces
 {
     public interface IUsuarioService
     {
-        Task<UsuarioDto> CriarUsuario(CriarUsuarioDto dto);
-        Task<string> DeletarUsuario(int id);
-        Task<bool> AlterarUsuario(UsuarioDto dto);
         Task<List<UsuarioDto>> ListarUsuarios();
+        Task<UsuarioDto> BuscarUsuarioPorId(int id);
+        Task<UsuarioDto> CriarUsuario(CriarUsuarioDto dto);
+        Task<bool> AlterarUsuario(UsuarioDto dto);
+        Task<string> DeletarUsuario(int id);
+  
+
     }
 }
