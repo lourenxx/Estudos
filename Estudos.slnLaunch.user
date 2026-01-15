@@ -4,11 +4,13 @@
     "Projects": [
       {
         "Path": "Estudos.Api\\Estudos.Api.csproj",
-        "Action": "Start"
+        "Action": "Start",
+        "DebugTarget": "IIS Express"
       },
       {
         "Path": "Estudos.Web\\Estudos.Web.csproj",
-        "Action": "Start"
+        "Action": "Start",
+        "DebugTarget": "IIS Express"
       }
     ]
   }
