@@ -3,12 +3,12 @@ const home = function () {
 
     const controles = function () {
         return {
-            tabelaUsuarios: '#tabelaUsuarios'
+            tabelaUsuariosHome: '#tabelaUsuariosHome'
         }
     }
 
     const tabelaUsuarios = function (data) {
-        $(controles().tabelaUsuarios).DataTable({
+        $(controles().tabelaUsuariosHome).DataTable({
             data: data,
             filter: true,
             info: true,
@@ -54,7 +54,6 @@ const home = function () {
                         })}`
                     }
                 }
-
             ]
         })
     }
@@ -62,10 +61,10 @@ const home = function () {
     const listarUsuarios = function () {
         $.ajax({
             type: 'GET',
-            url: '/Home/ListarUsuarios',
+            url: '../Home/ListarUsuarios',
             cache: false,
         }).done(function (data) {
-           console.log('Entrou o grosso!', data)
+            console.log('Entrou o grosso!', data)
             tabelaUsuarios(data)
         }).fail(function (jqXHR, textStatus, errorThrown) {
             console.log('Erro ao listar usuários: ' + textStatus)

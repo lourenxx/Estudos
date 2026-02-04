@@ -9,7 +9,7 @@ namespace Estudos.Api.Services.Interfaces
         Task<UsuarioDto> BuscarUsuarioPorId(int id);
         Task<UsuarioDto> CriarUsuario(CriarUsuarioDto dto);
         Task<bool> AlterarUsuario(UsuarioDto dto);
-        Task<string> DeletarUsuario(int id);
+        Task<string> ExcluirUsuario(int id);
   
 
     }

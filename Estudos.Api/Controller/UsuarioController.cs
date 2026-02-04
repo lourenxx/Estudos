@@ -72,12 +72,12 @@ namespace Estudos.Api.Controller
             }
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> DeletarUsuario(int id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> ExcluirUsuario(int id)
         {
             try
             {
-                var resultado = await _service.DeletarUsuario(id);
+                var resultado = await _service.ExcluirUsuario(id);
                 return Ok(resultado);
             }
             catch (Exception ex)

@@ -107,7 +107,7 @@ namespace Estudos.Api.Services
 
         }
 
-        public async Task<string> DeletarUsuario(int id)
+        public async Task<string> ExcluirUsuario(int id)
         {
             Usuario? usuario = await _context.Usuario.FindAsync(id);
 
