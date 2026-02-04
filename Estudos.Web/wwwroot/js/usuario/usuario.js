@@ -17,7 +17,7 @@
         return {
             nome: $(controles().nomeUsuario).val(),
             email: $(controles().emailUsuario).val(),
-            senha: $(controles().senhaUsuario).val(),   
+            senha: $(controles().senhaUsuario).val(),
         }
 
     }
@@ -71,19 +71,24 @@
                 },
                 {
                     data: null,
+                    title: 'Ações',
+                    className: 'text-center align-middle',
+                    orderable: false,
                     render: function (data, type, row) {
-                        return `
-                    <div class="btn-group btn-group-sm" role="group">
-                        <button title='Alterar' class="btn btn-outline-primary" data-toggle='tooltip'
-                                onclick="usuario().editarUsuario(${row.id})">
-                            ✏
-                        </button>
-                        <button title='Alterar' class="btn btn-outline-danger" data-toggle='tooltip'
-                                onclick="usuario().excluirUsuario(${row.id})">
-                            🗑️
-                        </button>
-                    </div>
-                `;
+                       return `
+                        <div class="btn-group btn-group-sm" role="group">
+                            <button title="Alterar"
+                                    class="btn btn-outline-primary"
+                                    onclick="usuario().editarUsuario(${row.id})">
+                                ✏
+                            </button>
+                            <button title="Excluir"
+                                    class="btn btn-outline-danger"
+                                    onclick="usuario().excluirUsuario(${row.id})">
+                                🗑️
+                            </button>
+                        </div>
+                    `;
                     }
                 }
 
@@ -92,14 +97,16 @@
     }
 
     const listarUsuarios = function () {
+        Main.mostrarLoading()
         $.ajax({
             type: 'GET',
             url: '../Usuario/ListarUsuarios',
             cache: false,
         }).done(function (data) {
-            console.log('Entrou o grosso!', data)
+            Main.esconderLoading();
             tabelaUsuarios(data)
         }).fail(function (jqXHR, textStatus, errorThrown) {
+            Main.esconderLoading();
             console.log('Erro ao listar usuários: ' + textStatus)
         })
     }
@@ -113,7 +120,7 @@
             },
             cache: false,
         }).done(function (data) {
-            console.log('Usuário cadastrado com sucesso!', data)
+            window.location.href = '/Usuario'
         }).fail(function (jqXHR, textStatus, errorThrown) {
             console.log('Erro ao cadastrar usuário: ' + textStatus)
         });
@@ -129,7 +136,7 @@
             cache: false,
         }).done(function (data) {
             alert(data);
-            usuario().listarUsuarios();
+            window.location.href = '/Usuario'
         }).fail(function (jqXHR, textStatus, errorThrown) {
             console.log('Erro ao excluir usuário: ' + textStatus)
         });
